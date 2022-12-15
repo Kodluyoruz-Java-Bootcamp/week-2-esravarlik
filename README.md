@@ -1,3 +1,4 @@
+
 **1. medium.com web sitesinin Object Modellemesini yapınız.**  
 **Output**  
 ![](MediumOutput.png)  
@@ -433,10 +434,6 @@ T copy();
 
 ````
 ---
-**3. Derste yapılan emlakcepte uygulamasını Singleton ve Factory pattern’larını uygulayın.
-   Oluşturulan objeler bu pattern’ler ile oluşturulmalıdır.(Spring içerisinde BeanFactory gibi
-   davranmasını bekliyoruz)**
----
 **4. Java dünyasındaki framework’ler ve çözdükleri problemler nedir? Kod Örneklendirini de içermelidir.**  
 Framework; yazılım geliştirmek için destek/kılavuz görevi görerek, rutin işleri otomatik olarak yaparak,
 zaman tasarrufu sağlayan ve kısayollar sunan hızlı bir şekilde uygulama geliştirilmesini sağlayan iskelet yapıdır.
@@ -658,22 +655,22 @@ sonucu değiştirmiyor ise bu fonksiyon Idempotent’dir. HTTP methodları aras�
 POST değildir.  
 
 GET Requests
-````http
+````json
 Request-GET /users - 200 (OK) Content-type: text/html
 ````
 
 POST Requests
-````http
+````json
 Request-POST /users - 201 (CREATED) Content-type: application/json
 ````
 
 PUT Requests
-````http
+````json
 Request-PUT /users/:idResponse- 200 (OK)
 ````
 
 DELETE Requests
-````http
+````json
 Request-DELETE /users/:idResponse- 204 (NO CONTENT)
 ````
 
