@@ -9,17 +9,16 @@ import static java.util.stream.Collectors.toList;
 
 public class RealtyService {
 
-    private final RealtyDao realtyDao = new RealtyDao();
-
-
     // Singleton Pattern
     private static final RealtyService realtyService = new RealtyService();
+    private final RealtyDao realtyDao = new RealtyDao();
 
     private RealtyService() {
 
     }
+
     public static RealtyService getDifferentInstance() {
-        return  new RealtyService();
+        return new RealtyService();
     }
 
     public static RealtyService getSameInstance() {
@@ -28,23 +27,25 @@ public class RealtyService {
 
     public void createRealty(Realty realty) {
 
-        if (UserType.INDIVIDUAL.equals(realty.getUser().getType())) {
-            if (realtyDao.findAllRealty().size() > 3) {
+        if (UserType.INDIVIDUAL.equals(realty.getUser().getType()) && HousingType.HOUSE.equals(realty.getHousingType())) {
+            if (realty.getUser().getRealtyList().size() > 3) {
                 System.out.println("Individual users can post up to 3 ads.");
-            }
-            /*
-
-            else if(!realty.getHousingType().equals(HousingType.RESIDENTIAL)){
-                System.out.println("Individual users can only post residential type ads.");
-        }
-*/
-            else {
+            } else {
                 realtyDao.saveRealty(realty);
                 System.out.println("createRealty :: " + realty.getTitle());
             }
+
+        } else {
+            System.out.println("Individual users can only post home type ads.");
+        }
+
+        if(!UserType.INDIVIDUAL.equals(realty.getUser().getType())){
+            realtyDao.saveRealty(realty);
+            System.out.println("createRealty :: " + realty.getTitle());
         }
 
     }
+
 
     public List<Realty> getAll() {
         return realtyDao.findAllRealty();
@@ -74,8 +75,8 @@ public class RealtyService {
 
     public void getAllByProvinceAndByHousingType(Realty realty) {
         getAll().stream()
-                .filter(re-> re.getProvince().equals(realty.getProvince()))
-                .filter(re -> HousingType.RESIDENTIAL.equals(realty.getHousingType()))
+                .filter(re -> re.getProvince().equals(realty.getProvince()))
+                .filter(re -> HousingType.HOUSE.equals(realty.getHousingType()))
                 .collect(toList());
 
 
@@ -91,6 +92,19 @@ public class RealtyService {
         return Math.toIntExact(getAll().stream()
                 .filter(realty -> realty.getProvince().equals(province))
                 .count());
+    }
+
+    public long getRealtyNumberInProvince(String provinces) {
+        return getAll().stream()
+                .filter(realty -> provinces.contains(realty.getProvince()))
+                .count();
+    }
+
+    public void showcaseProvince(String province) {
+        getAll().stream()
+                .filter(realty -> realty.getProvince().equals(province))
+                .limit(10)
+                .forEach(realty -> System.out.println(realty));
     }
 
 

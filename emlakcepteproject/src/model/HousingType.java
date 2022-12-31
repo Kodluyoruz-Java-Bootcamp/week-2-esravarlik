@@ -5,5 +5,5 @@ public enum HousingType {
     VILLA,
     RESIDENCE,
     PLAZA,
-    RESIDENTIAL
+    HOUSE
 }

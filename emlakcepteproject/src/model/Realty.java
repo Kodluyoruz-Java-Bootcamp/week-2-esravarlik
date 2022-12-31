@@ -4,18 +4,18 @@ import java.time.LocalDateTime;
 
 public class Realty {
 
+    private static final Realty realty = new Realty();
     private Long no;
     private String title;
     private LocalDateTime publishedDate;
     private User user;
     private RealtyType status;
     private String province;
-
     private HousingType housingType;
     private String district;
 
-    public Realty() {
-        super();
+    private Realty() {
+
     }
 
     public Realty(Long no, String title, LocalDateTime publishedDate, User user, RealtyType status) {
@@ -25,6 +25,14 @@ public class Realty {
         this.publishedDate = publishedDate;
         this.user = user;
         this.status = status;
+    }
+
+    public static Realty getDifferentInstance() {
+        return new Realty();
+    }
+
+    public static Realty getSameInstance() {
+        return realty;
     }
 
     public Long getNo() {

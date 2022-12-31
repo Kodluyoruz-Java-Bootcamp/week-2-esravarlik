@@ -16,4 +16,8 @@ public class UserDao {
     public List<User> findAllUsers() {
         return userList;
     }
+
+    public void saveHistory(String history, User user) {
+        user.addSearch(history);
+    }
 }

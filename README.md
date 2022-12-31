@@ -1,6 +1,6 @@
 
 **1. medium.com web sitesinin Object Modellemesini yapınız.**  
-**Output**  
+**Output:**  
 ![](MediumOutput.png)  
 ---
 **2. Creational Design Pattern’lar incelenmelidir. Örneklerle anlatınız.**  
@@ -433,6 +433,11 @@ T copy();
 }
 
 ````
+---
+**3. Derste yapılan emlakcepte uygulamasını Singleton ve Factory pattern’larını uygulayın.
+   Oluşturulan objeler bu pattern’ler ile oluşturulmalıdır.(Spring içerisinde BeanFactory gibi
+   davranmasını bekliyoruz)**  
+
 ---
 **4. Java dünyasındaki framework’ler ve çözdükleri problemler nedir? Kod Örneklendirini de içermelidir.**  
 Framework; yazılım geliştirmek için destek/kılavuz görevi görerek, rutin işleri otomatik olarak yaparak,

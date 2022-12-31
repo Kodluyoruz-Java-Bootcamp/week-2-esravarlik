@@ -1,22 +1,19 @@
 package model;
 
-import service.UserService;
-
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class User {
 
+    private static final List<String> history = new ArrayList<>();
+    private static List<Realty> realtyList = new ArrayList<>();
+    private static List<Realty> favoriteRealtyList = new ArrayList<>();
     private String name;
-    private String mail;
+    private String email;
     private String password;
     private UserType type;
-    private List<Realty> realtyList;
-    private List<Realty> favoriteRealtyList;
     private List<Message> messages;
-
-    private final List<String> history = new ArrayList<>();
     private LocalDateTime createDate;
 
     // Singleton Pattern
@@ -25,21 +22,13 @@ public class User {
     private User() {
 
     }
+
     public static User getDifferentInstance() {
-        return  new User();
+        return new User();
     }
 
     public static User getSameInstance() {
         return user;
-    }
-
-    public User(String name, String mail, String password, UserType type, List<Realty> realtyList) {
-        super();
-        this.name = name;
-        this.mail = mail;
-        this.password = password;
-        this.type = type;
-        this.realtyList = realtyList;
     }
 
     public String getName() {
@@ -51,11 +40,11 @@ public class User {
     }
 
     public String getMail() {
-        return mail;
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setMail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -116,7 +105,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User name: " + name + ", mail: " + mail + ", password: " + password + ", type: " + type + "createDate: "
+        return "User name: " + name + ", mail: " + email + ", password: " + password + ", type: " + type + "createDate: "
                 + createDate;
     }
 }
